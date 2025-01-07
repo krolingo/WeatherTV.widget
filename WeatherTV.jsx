@@ -8,7 +8,7 @@ export const command = `
 export const className = `
   .weather-widget {
     position: absolute;
-    top: 50px;
+    top: 270px;
     left: 50px;
     color: white;
     font-family: 'Helvetica Neue', Arial, sans-serif;
@@ -101,6 +101,15 @@ export const className = `
     margin: 0 5px;
     font-weight: 200;
   }
+  
+  .real-feel {
+	font-family: 'Helvetica Neue', Arial, sans-serif;
+	font-size: 14px; /* Adjust font size as needed */
+  	font-weight: 300; /* Emphasize the value */
+  	font-style: italic; /* Optional styling */
+  	color: #ffcc00; /* Highlight color */
+  	margin-top: 5px; /* Spacing from other elements */
+	}
 
   .hour-tile img {
     width: 40px;
@@ -214,6 +223,11 @@ export const render = ({ output }) => {
           {hourlyForecast.map((hour) => {
             const iconFilename = `${hour.shortForecast.replace(/\s+/g, "").replace(/[^a-zA-Z0-9]/g, "")}.png`;
             const iconSrc = `weatherTV.widget/images/${iconFilename}`;
+            const hourRealFeel = calculateRealFeel(
+              hour.temperature,
+              hour.windSpeed,
+              hour.relativeHumidity?.value
+            );
             return (
               <div key={hour.startTime} className="hour-tile">
                 <img src={iconSrc} alt={hour.shortForecast} />
@@ -221,6 +235,7 @@ export const render = ({ output }) => {
                   {new Date(hour.startTime).toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" })}
                 </div>
                 <div>{hour.temperature}°F</div>
+                <div className="real-feel">{hourRealFeel || "N/A"}°F</div>
               </div>
             );
           })}
