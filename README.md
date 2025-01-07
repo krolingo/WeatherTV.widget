@@ -102,8 +102,3 @@ This widget dynamically fetches and displays weather data, including the calcula
 ## Customization
 - Modify `refreshFrequency` to change the update interval.
 - Adjust CSS classes in `className` to customize the appearance.
-
-
-## Customization
-- Modify `refreshFrequency` to change the update interval.
-- Adjust CSS classes in `className` to customize the appearance.
