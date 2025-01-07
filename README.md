@@ -90,7 +90,6 @@ This widget dynamically fetches and displays weather data, including the calcula
   - Includes a 5-hour forecast with visual icons for quick reference.
 
 ## Technical Highlights
-- Built with JSX for a clean and modern user interface.
 - Uses asynchronous API calls to dynamically render weather data.
 - Modular and easily customizable for different use cases.
 
