@@ -1,4 +1,4 @@
-# Weather Widget: Real Feel Temperature Display
+# Weather Widget: Real Feel Temp calculator widget
 
 <img src="screen.png" width=600px>
 
