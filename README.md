@@ -113,7 +113,7 @@ This widget dynamically fetches and displays weather data, including the calcula
 
 ## Required images
 ``` sh
-/weatherTV.widget/images
+weatherTV.widget/images
 .
 ├── ChanceVeryLightSnow.png
 ├── Cloudy-old.png
