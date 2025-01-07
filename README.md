@@ -8,6 +8,39 @@ This widget dynamically fetches and displays weather data, including the calcula
 - **Real Feel Calculation**:
   - Calculates a realistic temperature perception using wind chill (for cold conditions) and heat index (for hot conditions).
   - Integrates multiple factors like temperature, wind speed, and humidity.
+ ``` javascript
+    // Calculate Real Feel
+    const calculateRealFeel = (temperature, windSpeed, humidity) => {
+      if (temperature === null) return null;
+
+      const tempFahrenheit = parseFloat(temperature);
+      const windSpeedMph = windSpeed ? parseFloat(windSpeed) : 0;
+      const humidityPercent = humidity ? parseFloat(humidity) : 0;
+
+      // Wind chill for cold conditions
+      if (tempFahrenheit <= 50 && windSpeedMph >= 3) {
+        return (
+          35.74 +
+          0.6215 * tempFahrenheit -
+          35.75 * Math.pow(windSpeedMph, 0.16) +
+          0.4275 * tempFahrenheit * Math.pow(windSpeedMph, 0.16)
+        ).toFixed(1);
+      }
+      // Heat index for hot conditions
+      else if (tempFahrenheit >= 80 && humidityPercent >= 40) {
+        return (
+          -42.379 +
+          2.04901523 * tempFahrenheit +
+          10.14333127 * humidityPercent -
+          0.22475541 * tempFahrenheit * humidityPercent -
+          0.00683783 * Math.pow(tempFahrenheit, 2) -
+          0.05481717 * Math.pow(humidityPercent, 2) +
+          0.00122874 * Math.pow(tempFahrenheit, 2) * humidityPercent +
+          0.00085282 * tempFahrenheit * Math.pow(humidityPercent, 2) -
+          0.00000199 * Math.pow(tempFahrenheit, 2) * Math.pow(humidityPercent, 2)
+        ).toFixed(1);
+      }
+```
 - **Real-Time Weather Data**:
   - Fetches hourly forecasts from the NWS API.
   - Automatically updates every 10 minutes.
