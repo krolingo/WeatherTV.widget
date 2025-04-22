@@ -1,6 +1,6 @@
 # Weather Widget: Real Feel Temp calculator widget
 
-<img src="screen.png" width=600px>
+<img src="screenshot.png" width=600px>
 
 This widget dynamically fetches and displays weather data, including the calculated "Real Feel" temperature, based on the National Weather Service (NWS) API.
 
